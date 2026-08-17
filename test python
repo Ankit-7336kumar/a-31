@@ -1,0 +1,77 @@
+# 8. Employee Encapsulation
+
+class Employee:
+    def __init__(self, name, salary):
+        self.name = name
+        self.__salary = salary
+
+    def get_salary(self):
+        return self.__salary
+
+    def set_salary(self, amount):
+        if amount > 0:
+            self.__salary = amount
+            print("Salary updated successfully")
+        else:
+            print("Salary must be positive")
+
+
+emp = Employee("Ankit", 30000)
+
+print("Employee Name:", emp.name)
+print("Salary:", emp.get_salary())
+
+emp.set_salary(35000)
+
+print("Updated Salary:", emp.get_salary())
+
+
+# 9. Inheritance - Manager
+
+class EmployeeManager:
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+
+
+class Manager(EmployeeManager):
+    def __init__(self, name, salary, bonus):
+        super().__init__(name, salary)
+        self.bonus = bonus
+
+    def total_compensation(self):
+        return self.salary + self.bonus
+
+
+manager = Manager("Rahul", 50000, 10000)
+
+print("\nManager Name:", manager.name)
+print("Salary:", manager.salary)
+print("Bonus:", manager.bonus)
+print("Total Compensation:", manager.total_compensation())
+
+
+# 10. Product Inventory
+
+class Product:
+    def __init__(self, name, price, stock):
+        self.name = name
+        self.price = price
+        self.stock = stock
+
+    def sell(self, quantity):
+        if quantity <= self.stock:
+            self.stock -= quantity
+            print("\nProduct sold successfully")
+            print("Remaining Stock:", self.stock)
+        else:
+            print("\nInsufficient stock")
+
+
+product = Product("Laptop", 50000, 10)
+
+print("\nProduct Name:", product.name)
+print("Price:", product.price)
+print("Stock:", product.stock)
+
+product.sell(3)
